@@ -100,8 +100,10 @@ async function windowRedirect() {
   const data = await response.json();
   const keywords = data.keywords;
  
-  var foundKeyword = keywords.find((keyword) => input.includes(keyword.toLowerCase()));
-   
+  var inputWords = input.split(/\s+/);
+ 
+  var foundKeyword = keywords.find((keyword) => inputWords.includes(keyword.toLowerCase()));
+ 
   if (foundKeyword) {
      window.location.replace(`https://${foundKeyword}.com`);
   } else {
@@ -110,7 +112,7 @@ async function windowRedirect() {
      );
   }
  }
-
+ 
 // time
 
 function showTime() {
