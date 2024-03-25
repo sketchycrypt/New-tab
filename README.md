@@ -6,7 +6,7 @@ new tab is a simple, clean new tab page that i made with tailwind css in 2 days 
 
 ## ⏬ installation
 
-Replace apiKey in /src/main.js with your API Key from [OpenWeather](https://openweathermap.org)
+Create a file named 'data.json' inside /src/ and make a variable called "apiKey" with the value of your API Key from [OpenWeather](https://openweathermap.org)
 
 
 Download the repository code (<strong>and [Tailwind CSS](https://tailwindcss.com) if you want to make changes to the styling</strong>), using a server like [APACHE](https://httpd.apache.org/) to run a local server then redirect the new tab page url to the server url using a browser extension.
