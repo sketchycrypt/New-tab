@@ -1,10 +1,14 @@
 var searchBox = document.getElementById("text_box");
 var searchButton = document.getElementById("searchbutton");
 var temp = document.getElementById("temperature");
-const savedTheme = localStorage.getItem("theme");
+var savedTheme = localStorage.getItem("theme");
 var body = document.getElementById("body");
 var darkmodeButton = document.getElementById("darkModeBtn");
 var loadingCircle = document.getElementById("loadingCircle");
+
+var apiKeyInput = document.getElementById("apiKeyInput")
+var apiKeyInputContainer = document.getElementById("apiKeyInputContainer")
+var linkContainer = document.getElementById('link-container')
 
 searchBox.focus();
 
@@ -48,15 +52,55 @@ function getLocation() {
 }
 
 async function getApiKey() {
-  let apiKey = localStorage.getItem('apiKey')
-  if(!apiKey){
-    const response = await fetch('data.json')
-    const data = await response.json()
-    apiKey = data.apiKey;
-    localStorage.setItem('apiKey', apiKey)
+  let apiKey = await caches.match('apiKey').then(response => {
+     if (response) {
+       return response.json().then(data => data.apiKey);
+     }
+     return null;
+  }).catch(error => {
+     console.error('Error retrieving API Key from cache:', error);
+     return null;
+  });
+ 
+  // If apiKey is not in the cache, fetch it from the server
+  if (!apiKey) {
+     const response = await fetch('data.json');
+     const data = await response.json();
+     apiKey = data.apiKey;
+ 
+     caches.open('apiKeyCache').then(cache => {
+       cache.put('apiKey', new Response(JSON.stringify({ apiKey: apiKey })));
+     }).catch(error => {
+       console.error('Error saving API Key to cache:', error);
+     });
   }
-  return apiKey
-}
+ 
+  return apiKey;
+ }
+ 
+
+// apiInputKey
+function inputApi() {
+  apiKeyInputContainer.classList.remove('hidden');
+  linkContainer.classList.add('hidden');
+  apiKeyInput.addEventListener("keydown", (event) => {
+     if (event.key === 'Enter') {
+       if (apiKeyInput.value.length === 32) {
+         const apiKey = apiKeyInput.value;
+         caches.open('apiKeyCache').then((cache) => {
+           cache.put('apiKey', new Response(JSON.stringify({ apiKey: apiKey })));
+           linkContainer.classList.remove('hidden');
+           apiKeyInputContainer.classList.add('hidden');
+         }).catch((error) => {
+           console.error('Error saving API Key to cache:', error);
+         });
+       } else {
+         alert("Not long enough");
+       }
+     }
+  });
+ }
+ 
 
 async function apiCall(latitude, longitude, apiKey) {
   try {

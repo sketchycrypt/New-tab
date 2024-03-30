@@ -13,6 +13,7 @@
       class="container mx-auto py-2 dark:fill-white dark:text-white"
       id="temperatureBox"
     >
+
       <!-- Button and temperature text aligned to the left -->
       <div class="flex items-center">
         <button class="px-4 py-2 m-4 rounded-full hover:scale-125 transition ease-in-out duration-150" id="darkModeBtn">
@@ -75,6 +76,24 @@
           </svg>
         </button>
       </div>
+    </div>
+
+    <!--API KEY INPUT-->
+
+    <div
+      class="hidden flex flex-col items-center justify-center rounded m-10 z-10"
+      id="apiKeyInputContainer"
+    >
+      <div class="font-kode mb-4 text-2xl dark:text-white">
+        Please input your API key from OpenWeather
+      </div>
+      <input
+        type="text"
+        placeholder="Input API key..."
+        maxlength="32"
+        id="apiKeyInput"
+        class="w-1/2 dark:text-white text-center rounded-lg px-8 py-2 focus:outline-none focus:border-gray font-kode text-2xl bg-white dark:bg-dark-bg text-left"
+      />
     </div>
 
     <!--links-->
@@ -215,13 +234,19 @@
 
     <!--credits :3-->
 
-    <div
+    <!-- <div
       class="fixed bottom-0 right-0 m-4 text-sm text-gray-600 font-kode dark:text-white animate-pulse cursor-pointer"
       onclick="window.location.href = 'https://www.youtube.com/watch?v=pfF5EFy4e1M'"
     >
       made by skxtch with &lt;3
+    </div> -->
+    <div
+      class="fixed bottom-0 right-0 m-4 text-sm text-gray-600 font-kode dark:text-white animate-pulse cursor-pointer"
+      onclick="window.location.href = './askBox'"
+    >
+      made by skxtch with &lt;3
     </div>
-
+    
     <script src="main.js"></script>
   </body>
 </html>
