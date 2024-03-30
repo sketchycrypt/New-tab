@@ -48,9 +48,14 @@ function getLocation() {
 }
 
 async function getApiKey() {
-  const response = await fetch("data.json");
-  const data = await response.json();
-  return data.apiKey;
+  let apiKey = localStorage.getItem('apiKey')
+  if(!apiKey){
+    const response = await fetch('data.json')
+    const data = await response.json()
+    apiKey = data.apiKey;
+    localStorage.setItem('apiKey', apiKey)
+  }
+  return apiKey
 }
 
 async function apiCall(latitude, longitude, apiKey) {
@@ -72,9 +77,6 @@ async function apiCall(latitude, longitude, apiKey) {
     console.error("error");
   }
 }
-
-// this is slow but it works
-// TODO : fix how slow this shit is
 
 getLocation()
   .then(async (position) => {
