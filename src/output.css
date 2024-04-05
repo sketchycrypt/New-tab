@@ -580,6 +580,10 @@ video {
   }
 }
 
+.invisible{
+  visibility: hidden;
+}
+
 .fixed{
   position: fixed;
 }
@@ -604,16 +608,12 @@ video {
   top: 0px;
 }
 
-.z-0{
-  z-index: 0;
-}
-
 .z-10{
   z-index: 10;
 }
 
-.z-20{
-  z-index: 20;
+.m-10{
+  margin: 2.5rem;
 }
 
 .m-4{
@@ -624,17 +624,17 @@ video {
   margin: 2rem;
 }
 
-.m-12{
-  margin: 3rem;
-}
-
-.m-10{
-  margin: 2.5rem;
+.m-2{
+  margin: 0.5rem;
 }
 
 .mx-auto{
   margin-left: auto;
   margin-right: auto;
+}
+
+.mb-4{
+  margin-bottom: 1rem;
 }
 
 .ml-4{
@@ -649,10 +649,6 @@ video {
   margin-top: 0.75rem;
 }
 
-.mb-4{
-  margin-bottom: 1rem;
-}
-
 .flex{
   display: flex;
 }
@@ -665,40 +661,20 @@ video {
   height: 1.5rem;
 }
 
-.h-64{
-  height: 16rem;
-}
-
 .h-screen{
   height: 100vh;
 }
 
-.h-96{
-  height: 24rem;
+.w-1\/2{
+  width: 50%;
 }
 
 .w-6{
   width: 1.5rem;
 }
 
-.w-64{
-  width: 16rem;
-}
-
 .w-full{
   width: 100%;
-}
-
-.w-96{
-  width: 24rem;
-}
-
-.w-9\/12{
-  width: 75%;
-}
-
-.w-1\/2{
-  width: 50%;
 }
 
 @keyframes pulse{
@@ -741,6 +717,10 @@ video {
   overflow: hidden;
 }
 
+.rounded{
+  border-radius: 0.25rem;
+}
+
 .rounded-full{
   border-radius: 9999px;
 }
@@ -749,34 +729,9 @@ video {
   border-radius: 0.5rem;
 }
 
-.rounded-md{
-  border-radius: 0.375rem;
-}
-
-.rounded{
-  border-radius: 0.25rem;
-}
-
-.border-2{
-  border-width: 2px;
-}
-
-.border-8{
-  border-width: 8px;
-}
-
-.border-4{
-  border-width: 4px;
-}
-
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.bg-dark-bg{
-  --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
 }
 
 .px-2{
@@ -826,9 +781,9 @@ video {
   line-height: 1.25rem;
 }
 
-.text-background{
-  --tw-text-opacity: 1;
-  color: rgb(25 25 25 / var(--tw-text-opacity));
+.text-xl{
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 .transition{
@@ -872,6 +827,25 @@ video {
 .focus\:outline-none:focus{
   outline: 2px solid transparent;
   outline-offset: 2px;
+}
+
+@media (min-width: 768px){
+  .md\:visible{
+    visibility: visible;
+  }
+
+  .md\:m-8{
+    margin: 2rem;
+  }
+
+  .md\:m-4{
+    margin: 1rem;
+  }
+
+  .md\:text-2xl{
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
 }
 
 .dark\:bg-dark-bg:where(.dark, .dark *){
