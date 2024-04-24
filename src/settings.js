@@ -1,0 +1,1 @@
+var settingsBtn = document.getElementById('settingsBtn');
